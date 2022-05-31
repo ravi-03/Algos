@@ -17,7 +17,7 @@ int nCr(int n, int r) {
 		nume /= g;
 		deno /= g;
 
-		n--, r--;
+	  	n--, r--;
 	}
 	return nume;
 }
