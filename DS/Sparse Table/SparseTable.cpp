@@ -15,6 +15,10 @@ int K;
 void buildSparseTable(vector<int> &a) {
 	int n = a.size();
 
+	K = log2(n);
+	sparseTable.clear();
+	sparseTable.resize(n, vector<int>(K + 1));
+
 	for(int row = 0; row < n; row++) {
 		sparseTable[row][0] = a[row]; //Check1
 	}
@@ -45,9 +49,6 @@ void runTests() {
 	for(int i = 0; i < n; i++) {
 		cin >> a[i];
 	}
-
-	K = log2(n);
-	sparseTable.resize(n, vector<int>(K + 1));
 
 	buildSparseTable(a);
 
