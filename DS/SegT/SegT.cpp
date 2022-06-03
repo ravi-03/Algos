@@ -69,11 +69,7 @@ void runTests() {
 		//type1 - query
 		if(type == 1) {
 			int l, r; cin >> l >> r;
-<<<<<<< HEAD
-			if(l > r) {
-=======
 			if(l > r || l < 0 || l >= n || r < 0 || r >= n) {
->>>>>>> f272b2c (Basic Segment Tree)
 				cout << "Incorrect range\n";
 				continue;
 			}
