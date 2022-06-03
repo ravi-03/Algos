@@ -10,19 +10,19 @@ using namespace std;
 #define fastIO() {ios_base::sync_with_stdio(false); cin.tie(NULL);}
 
 //DSU
-vector<int> parent;
+vector<int> leader;
 vector<int> rankk; //by depth of tree
 
 void make_set(int a) {
-	parent[a] = a;
+	leader[a] = a;
 	rankk[a] = 0;
 }
 
 int find_set(int a) {
-	if(a == parent[a]) {
+	if(a == leader[a]) {
 		return a;
 	}
-	return parent[a] = find_set(parent[a]); //path compression optimization
+	return leader[a] = find_set(leader[a]); //path compression optimization
 }
 
 void union_set(int a, int b) {
@@ -32,7 +32,7 @@ void union_set(int a, int b) {
 		if(rankk[leader_a] < rankk[leader_b]) { //union by rank optimization
 			swap(leader_a, leader_b);
 		}
-		parent[leader_b] = leader_a;
+		leader[leader_b] = leader_a;
 		if(rankk[leader_a] == rankk[leader_b]) {
 			rankk[leader_a]++;
 		}
@@ -46,7 +46,7 @@ void runTests() {
 		cin >> v[i];
 	}
 
-	parent.clear(); parent.resize(n, -1);
+	leader.clear(); leader.resize(n, -1);
 	rankk.clear(); rankk.resize(n, -1);
 
 	//make each index a set
@@ -71,7 +71,7 @@ void runTests() {
 	}
 
 	for(int i = 0; i < n; i++) {
-		cout << parent[i] << ' ';
+		cout << leader[i] << ' ';
 	}
 	cout << '\n';
 	for(int i = 0; i < n; i++) {
