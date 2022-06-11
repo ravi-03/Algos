@@ -28,7 +28,7 @@ int find_set(int a) {
 void union_set(int a, int b) {
 	int leader_a = find_set(a);
 	int leader_b = find_set(b);
-	if(a != b) {
+	if(leader_a != leader_b) {
 		if(rankk[leader_a] < rankk[leader_b]) { //union by rank optimization
 			swap(leader_a, leader_b);
 		}
